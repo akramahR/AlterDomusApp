@@ -1,21 +1,60 @@
-<p>user profile</p>
-
 <p *ngIf="!user"><em>Could not find such user</em></p>
 
 <div class="card" *ngIf="user">
     <img src={{user.avatarUrl}} alt={{user.login}} style="width:100%">
     <h1>{{user.login}}</h1>
-    <p [ngClass]="{'conditional-class': user.bio === null}">Bio: {{user.bio}}</p>
-    <p [ngClass]="{'conditional-class': user.company === null}">Company: {{user.company}}</p>
-    <p [ngClass]="{'conditional-class': user.location === null}">Location: {{user.location}}</p>
-    <p [ngClass]="{'conditional-class': user.repositoryCount<5}">RepositoryCount: {{user.repositoryCount}}</p>
-    <p [ngClass]="{'conditional-class': user.followersCount<5}">FollowersCount: {{user.followersCount}}</p>
-    <p><button>Go to profile</button></p>
-</div> 
+</div>
 
-<div class="card" *ngIf="showRecommendation">
-    <p>Hey there you have got an amazing git profile but it could be even better if you would:</p>
-    <div *ngFor="let rec of recommendations">
-        <ul>{{rec}}</ul>
+<div class="row" *ngIf="user">
+
+    <div class="column">
+        <div class="descriptionCard" [ngClass]="{'conditional-class': user && user.bio === null}">
+            <h3>Bio</h3>
+            <p *ngIf="user.bio">{{user.bio}}</p>
+            <p *ngIf="!user.bio">MISSING</p>
+        </div>
     </div>
-</div> 
+
+    <div class="column">
+        <div class="descriptionCard" [ngClass]="{'conditional-class': user && user.company === null}">
+            <h3>Company</h3>
+            <p *ngIf="user.company">{{user.company}}</p>
+            <p *ngIf="!user.company">MISSING</p>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="descriptionCard" [ngClass]="{'conditional-class': user && user.location === null}">
+            <h3>Location</h3>
+            <p *ngIf="user.location">{{user.location}}</p>
+            <p *ngIf="!user.location">MISSING</p>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="descriptionCard" [ngClass]="{'conditional-class': user && user.repositoryCount <5}">
+            <h3>Repositories</h3>
+            <p>{{user.repositoryCount}}</p>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="descriptionCard" [ngClass]="{'conditional-class': user && user.followersCount <5}">
+            <h3>Followers</h3>
+            <p>{{user.followersCount}}</p>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="recs" *ngIf="showRecommendation">
+    <p>Hey there you have got an amazing git profile but it could be even better if you would:</p>
+
+    <ul>
+        <div *ngFor="let rec of recommendations">
+            <li>{{rec}}</li>
+        </div>
+    </ul>
+
+</div>
