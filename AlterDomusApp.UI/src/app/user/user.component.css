@@ -75,7 +75,7 @@
     list-style-position: inside;
 }
   .recs{
-    box-shadow: 0 4px 8px 0 rgba(228, 124, 124, 0.842); /* this adds the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(22, 102, 4, 0.842); /* this adds the "card" effect */
     padding: 16px;
     text-align: center;
     background-color: #f1f1f1;
