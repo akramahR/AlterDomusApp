@@ -8,10 +8,18 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent {
   public userName:string = '';
+  public validation:boolean = false;
 
   constructor(private router: Router) {}
 
   onSubmit() {
-    this.router.navigateByUrl('/user/' + this.userName);
+    if(this.userName.trim() != '')
+    {
+      console.log("username:" +this.userName);
+      this.router.navigateByUrl('/user/' + this.userName);     
+    }
+    else{
+      this.validation = true;
+    }
 }
 }

@@ -2,6 +2,9 @@
 
 <form (ngSubmit)="onSubmit()">
     <label for="name">User name:</label>
-    <input type="text" name="uName" [(ngModel)]="userName" size="30">
+    <div *ngIf="validation">
+        User name is required.
+      </div>
+    <input type="text" name="uName" [(ngModel)]="userName" size="30" required minlength="1">
     <input type="submit" value="Submit">
 </form>

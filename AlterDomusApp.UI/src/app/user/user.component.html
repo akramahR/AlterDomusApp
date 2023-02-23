@@ -8,7 +8,7 @@
 <div class="row" *ngIf="user">
 
     <div class="column">
-        <div class="descriptionCard" [ngClass]="{'conditional-class': user && user.bio === null}">
+        <div class="descriptionCard" [ngClass]="{'conditional-class':user.bio === null}">
             <h3>Bio</h3>
             <p *ngIf="user.bio">{{user.bio}}</p>
             <p *ngIf="!user.bio">MISSING</p>
@@ -16,7 +16,7 @@
     </div>
 
     <div class="column">
-        <div class="descriptionCard" [ngClass]="{'conditional-class': user && user.company === null}">
+        <div class="descriptionCard" [ngClass]="{'conditional-class':user.company === null}">
             <h3>Company</h3>
             <p *ngIf="user.company">{{user.company}}</p>
             <p *ngIf="!user.company">MISSING</p>
@@ -24,7 +24,7 @@
     </div>
 
     <div class="column">
-        <div class="descriptionCard" [ngClass]="{'conditional-class': user && user.location === null}">
+        <div class="descriptionCard" [ngClass]="{'conditional-class':user.location === null}">
             <h3>Location</h3>
             <p *ngIf="user.location">{{user.location}}</p>
             <p *ngIf="!user.location">MISSING</p>
@@ -32,16 +32,16 @@
     </div>
 
     <div class="column">
-        <div class="descriptionCard" [ngClass]="{'conditional-class': user && user.repositoryCount <5}">
+        <div class="descriptionCard" [ngClass]="{'conditional-class':user.repositoryCount <5}">
             <h3>Repositories</h3>
             <p>{{user.repositoryCount}}</p>
         </div>
     </div>
 
     <div class="column">
-        <div class="descriptionCard" [ngClass]="{'conditional-class': user && user.followersCount <5}">
+        <div class="descriptionCard" [ngClass]="{'conditional-class':user.following <5}">
             <h3>Followers</h3>
-            <p>{{user.followersCount}}</p>
+            <p>{{user.following}}</p>
         </div>
     </div>
 

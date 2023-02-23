@@ -34,10 +34,10 @@ export class UserComponent {
       length = this.recommendations.push("Add your Location to the profile");
     }
     if(this.user?.repositoryCount<5 ){
-      length = this.recommendations.push("Increase the number of repositories");
+      length = this.recommendations.push("Create some more projects");
     }
-    if(this.user?.followersCount<5 ){
-      length = this.recommendations.push("Increase the number of followers");
+    if(this.user?.following<5 ){
+      length = this.recommendations.push("Follow some more developers");
     }
     console.log(this.recommendations);
     this.showRecommendation = length > 0;
@@ -53,5 +53,5 @@ interface User{
   location:string;
   avatarUrl:string;
   repositoryCount:number;
-  followersCount:number;
+  following:number;
 }

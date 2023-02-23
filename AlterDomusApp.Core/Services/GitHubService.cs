@@ -35,12 +35,8 @@ namespace AlterDomusApp.Core.Services
         {
             _logger.LogInformation("executing in GetUserDataAsync");
             // Create and start the tasks.
-            var followersTask = _userProfileGithub.GetUserFollowersAsync(userLogin);
             var reposTask = _userProfileGithub.GetUserRepositoriesAsync(userLogin);
             var profileTask = _userProfileGithub.GetUserProfileAsync(userLogin);
-
-            var followers = await followersTask.ConfigureAwait(false) ?? throw new Exception("null repos recieved");
-            _logger.LogInformation("followers:" + JsonSerializer.Serialize(followers));
 
             var repos = await reposTask.ConfigureAwait(false) ?? throw new Exception("null repos recieved");
             _logger.LogInformation("repos:" + JsonSerializer.Serialize(repos));
@@ -50,7 +46,6 @@ namespace AlterDomusApp.Core.Services
 
             var userDto = _mapper.Map<UserGithubDTO>(profile);
             userDto.RepositoryCount = repos.Count;
-            userDto.FollowersCount = followers.Count;
 
             return userDto;
 

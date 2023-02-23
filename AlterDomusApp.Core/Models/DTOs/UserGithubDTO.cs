@@ -21,7 +21,7 @@ namespace AlterDomusApp.Core.Models.DTOs
         public string? AvatarUrl { get; set; }
         [JsonPropertyName("repositoryCount")]
         public int RepositoryCount { get; set; }
-        [JsonPropertyName("followersCount")]
-        public int FollowersCount { get; set; }
+        [JsonPropertyName("following")]
+        public int Following { get; set; }
     }
 }

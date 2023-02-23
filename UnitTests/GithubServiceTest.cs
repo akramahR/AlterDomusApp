@@ -37,7 +37,7 @@ namespace UnitTests
                 Bio = "TestBio",
                 Location = "TestCity",
                 AvatarUrl = "Test.com",
-                FollowersCount = 3,
+                Following = 3,
                 RepositoryCount = 2
             };
 
