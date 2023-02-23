@@ -10,7 +10,7 @@ using System.Text.Json;
 namespace AlterDomusApp.Github
 {
     /// <summary>
-    /// Github Client implementation for communicating with github's rest apis over http.
+    /// Github resources avaialible .
     /// </summary>
     public class GithubResources: IGithubResources
     {
@@ -20,22 +20,34 @@ namespace AlterDomusApp.Github
         {
             _githubClient = githubClient;
         }
-
-        public async Task<List<UserFollowersGithub>> GetUserFollowersAsync(string userLogin)
+        /// <summary>
+        /// Get the followers a github user has and their details.
+        /// </summary>
+        /// <param name="userLogin">user whose followers are needed</param>
+        /// <returns>user followers</returns>
+        public async Task<List<UserFollowersGithub>?> GetUserFollowersAsync(string userLogin)
         {
             var requestUri = "users/" + userLogin + "/followers";
             var userFollowers = await _githubClient.GetGithubDataAsync<List<UserFollowersGithub>>(requestUri);
             return userFollowers;
         }
-
-        public async Task<UserProfileGithub> GetUserProfileAsync(string userLogin)
+        /// <summary>
+        /// Get the profile details of a github user
+        /// </summary>
+        /// <param name="userLogin">user whose profile is needed</param>
+        /// <returns>user profile</returns>
+        public async Task<UserProfileGithub?> GetUserProfileAsync(string userLogin)
         {
             var requestUri = "users/" + userLogin;
             var userProfile = await _githubClient.GetGithubDataAsync<UserProfileGithub>(requestUri);
             return userProfile;
         }
-
-        public async Task<List<UserReposGithub>> GetUserRepositoriesAsync(string userLogin)
+        /// <summary>
+        /// Get the repositories of a github user
+        /// </summary>
+        /// <param name="userLogin">user whose repositories are needed</param>
+        /// <returns>user repositories</returns>
+        public async Task<List<UserReposGithub>?> GetUserRepositoriesAsync(string userLogin)
         {
             var requestUri = "users/" + userLogin + "/repos";
             var userRepos = await _githubClient.GetGithubDataAsync<List<UserReposGithub>>(requestUri);
