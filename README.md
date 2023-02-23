@@ -7,7 +7,8 @@
     <li><a href="#design">Design</a></li>
     <li><a href="#exception-handling">Exception handling</a></li>
     <li><a href="#logging">Logging</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#mappings">Mappings</a></li>
+    <li><a href="#http-communication">Http Communication</a></li>
   </ol>
 </details>
 
@@ -37,9 +38,7 @@ A new web page where team developers can inform their Github id(login) and recie
 ## Design
 ![My Image](design.png)
 
-* In this project clean architecture guidelines have been followed and so core does not depend on any other project through dependency inversion. All the components in the project depend on abstractions. Apart from this all other projects communicate together through contracts exposed by core and do not directly call each other.
-
-* Note:No project should use contracts other than those defined by core or it's own at any point in development.
+* In this project clean architecture guidelines have been followed and so core does not depend on any other project through dependency inversion. All the components in the project depend on abstractions. Apart from this all other projects communicate together through adapters/interfaces exposed by core and do not directly call each other.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -63,4 +62,9 @@ If we want to set statusCode we can do so by throwing an httpException along wit
 * As of now application insights is configured and being used by the application. So any logging along with monitoring can be accessed on azure application insights.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## Mappings
+We are using automapper to map our entities to DTOs and we have stored them in Core in mappings folder.
+
+## Http Communication
+In our system we are using IHttpClientFactory along with named clients, pre configured, for http communication program.cs. The name of those clients is stored as static in HttpClientNames.cs in core/shared.
 
