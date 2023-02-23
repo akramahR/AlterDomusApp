@@ -9,6 +9,7 @@
     <li><a href="#logging">Logging</a></li>
     <li><a href="#mappings">Mappings</a></li>
     <li><a href="#http-communication">Http Communication</a></li>
+    <li><a href="#suggestions-for-improvement">Suggestions for improvement</a></li>
   </ol>
 </details>
 
@@ -68,3 +69,6 @@ We are using automapper to map our entities to DTOs and we have stored them in C
 ## Http Communication
 In our system we are using IHttpClientFactory along with named clients, pre configured, for http communication program.cs. The name of those clients is stored as static in HttpClientNames.cs in core/shared.
 
+## Suggestions for improvement
+* Approve the app by github cloud enterprise and authenticate client from github to increase rate limit
+* Use graphql api to possibly reduce the number of requests required to be sent to github 
