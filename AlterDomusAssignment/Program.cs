@@ -28,6 +28,7 @@ builder.Services.AddHttpClient(HttpClientNames.Github, httpClient =>
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddCoreServices();
 builder.Services.AddGithubClientServices();
+//Configure application insights
 builder.Services.AddApplicationInsightsTelemetry(builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]);
 var app = builder.Build();
 
@@ -48,4 +49,5 @@ app.MapControllers();
 
 app.Run();
 
+//required for integration testing
 public partial class Program { }

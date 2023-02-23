@@ -17,6 +17,6 @@ namespace AlterDomusApp.Github.Client
         /// <typeparam name="T">The type response should be deserialised to</typeparam>
         /// <param name="requestUri">the location of the resource that needs to be fetched</param>
         /// <returns>response from get request as T</returns>
-        public Task<T> GetGithubDataAsync<T>(string requestUri) where T : new();
+        public Task<T?> GetGithubDataAsync<T>(string requestUri) where T : new();
     }
 }

@@ -1,24 +1,27 @@
 using AlterDomusApp.Core.Interfaces.Infrastructure.Github;
+using AlterDomusApp.Core.Interfaces.Services;
 using AlterDomusApp.Core.Mappings;
 using AlterDomusApp.Core.Models.DTOs;
 using AlterDomusApp.Core.Services;
 using AutoMapper;
 using FluentAssertions;
+using Microsoft.Extensions.Logging;
 using Moq;
 
 namespace UnitTests
 {
     public class Tests
     {
-        private GitHubService gitHubService;
+        private IGitHubService gitHubService;
         private Mock<IGithubResources> githubClientMock = new ();
+        private Mock<ILogger<GitHubService>> loggerMock = new();
         [SetUp]
         public void Setup()
         {
             var config = new MapperConfiguration(cfg => cfg.AddProfile<UserGithubProfile>());
             var mapper = config.CreateMapper();
 
-            gitHubService = new GitHubService(githubClientMock.Object, mapper);
+            gitHubService = new GitHubService(githubClientMock.Object, mapper, loggerMock.Object);
         }
 
         [Test]

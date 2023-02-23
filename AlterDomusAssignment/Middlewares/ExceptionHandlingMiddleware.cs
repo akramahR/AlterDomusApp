@@ -7,14 +7,9 @@ using System.Text.Json.Serialization;
 
 namespace AlterDomusAssignment.Middlewares
 {
-    public static class ExceptionHandlingMiddlewareExtensions
-    {
-        public static IApplicationBuilder UseCustomExceptionHandler(
-            this IApplicationBuilder builder)
-        {
-            return builder.UseMiddleware<ExceptionHandlingMiddleware>();
-        }
-    }
+    /// <summary>
+    /// To handle any exception caught during request processing.
+    /// </summary>
     public class ExceptionHandlingMiddleware
     {
         private readonly RequestDelegate _next;
@@ -38,6 +33,12 @@ namespace AlterDomusAssignment.Middlewares
                 await HandleExceptionMessageAsync(context, ex).ConfigureAwait(false);
             }
         }
+        /// <summary>
+        /// To return appropriate response to the client
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="exception"></param>
+        /// <returns></returns>
         private static Task HandleExceptionMessageAsync(HttpContext context, Exception exception)
         {
             context.Response.ContentType = "application/json";
@@ -54,6 +55,14 @@ namespace AlterDomusAssignment.Middlewares
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = statusCode;
             return context.Response.WriteAsync(result);
+        }
+    }
+    public static class ExceptionHandlingMiddlewareExtensions
+    {
+        public static IApplicationBuilder UseCustomExceptionHandler(
+            this IApplicationBuilder builder)
+        {
+            return builder.UseMiddleware<ExceptionHandlingMiddleware>();
         }
     }
 }

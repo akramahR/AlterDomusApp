@@ -1,4 +1,5 @@
 using AlterDomusApp.Core.Models.DTOs;
+using AlterDomusAssignment.Models;
 using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -27,6 +28,16 @@ namespace IntegrationTests
             var response = await api.CreateClient().GetAsync("/api/Github?userLogin=adshbsdhvjbdvashj");
 
             response.StatusCode.Should().Be(HttpStatusCode.NotFound);
+        }
+        [Fact]
+        public async Task Get_EndpointClientResponseOnInvalidUser()
+        {
+            var api = new WebApplicationFactory();
+            var response = await api.CreateClient().GetAsync("/api/Github?userLogin=adshbsdhvjbdvashj");
+
+            var res = await response.Content.ReadAsStringAsync();
+            var data = JsonSerializer.Deserialize<ErrorDetails>(res);
+            Assert.Equal(404 ,data.StatusCode);
         }
         [Fact]
         public async Task Get_EndpointContentValid()

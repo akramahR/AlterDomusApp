@@ -9,7 +9,7 @@ namespace AlterDomusApp.Core
     {
         public static IServiceCollection AddCoreServices(this IServiceCollection services)
         {
-            services.AddTransient<IGitHubService, GithubMockService>();
+            services.AddTransient<IGitHubService, GitHubService>();
             return services;
         }
     }
