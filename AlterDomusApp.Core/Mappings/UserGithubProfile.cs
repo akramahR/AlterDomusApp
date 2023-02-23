@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace AlterDomusApp.Core.Mappings
 {
+    /// <summary>
+    /// AutoMapper mappings
+    /// </summary>
     public class UserGithubProfile: Profile
     {
         public UserGithubProfile()

@@ -49,7 +49,7 @@ namespace IntegrationTests
                 Bio = null,
                 Location = null,
                 AvatarUrl = "https://avatars.githubusercontent.com/u/99917829?v=4",
-                Following = 0,
+                Following = 1,
                 RepositoryCount = 1
             };
             var api = new WebApplicationFactory();

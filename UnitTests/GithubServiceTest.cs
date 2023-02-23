@@ -50,15 +50,6 @@ namespace UnitTests
                 });
 
             githubClientMock.
-                Setup(mock => mock.GetUserFollowersAsync(userLogin))
-                .ReturnsAsync(new List<AlterDomusApp.Core.Models.UserFollowersGithub>()
-                {
-                    new AlterDomusApp.Core.Models.UserFollowersGithub(),
-                    new AlterDomusApp.Core.Models.UserFollowersGithub(),
-                    new AlterDomusApp.Core.Models.UserFollowersGithub(),
-                });
-
-            githubClientMock.
                 Setup(mock => mock.GetUserProfileAsync(userLogin))
                 .ReturnsAsync(new AlterDomusApp.Core.Models.UserProfileGithub()
                 {
@@ -66,7 +57,8 @@ namespace UnitTests
                     Company = "TestCompany",
                     Bio = "TestBio",
                     Location= "TestCity",
-                    AvatarUrl="Test.com"
+                    AvatarUrl="Test.com",
+                    Following = 3
                 });
 
             //ACT

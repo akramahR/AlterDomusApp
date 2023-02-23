@@ -15,9 +15,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//pre configure the client created by factory for github with base uri and headers
 builder.Services.AddHttpClient(HttpClientNames.Github, httpClient =>
 {
-    httpClient.BaseAddress = new Uri("https://api.github.com/");
+    httpClient.BaseAddress = new Uri(builder.Configuration["GithubBaseUrl"]);
 
     httpClient.DefaultRequestHeaders.Add(
         HeaderNames.Accept, "application/vnd.github+json");
